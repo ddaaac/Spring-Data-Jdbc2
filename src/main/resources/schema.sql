@@ -40,3 +40,28 @@ create table if not exists embedded_entity
     child2_name1x varchar(255),
     child2_name2x varchar(255)
 );
+
+create table if not exists user
+(
+    id   bigint primary key,
+    name varchar(50)
+);
+
+create table if not exists orders
+(
+    id    varchar(255) primary key,
+    title varchar(50)
+);
+
+create table if not exists product
+(
+    id      bigint primary key,
+    name    varchar(255),
+    version bigint
+);
+
+create table if not exists member
+(
+    id       bigint primary key,
+    name     varchar(50)
+);
