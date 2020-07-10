@@ -18,3 +18,15 @@ create table if not exists comment
     article     bigint,
     article_key bigint
 );
+
+create table if not exists chess
+(
+    id bigint primary key auto_increment
+);
+
+create table if not exists piece
+(
+    name     varchar(30),
+    chess_id bigint,
+    position varchar(20)
+);
