@@ -30,3 +30,13 @@ create table if not exists piece
     chess_id bigint,
     position varchar(20)
 );
+
+create table if not exists embedded_entity
+(
+    id bigint primary key auto_increment,
+    name varchar(255),
+    child1_name1x varchar(255),
+    child1_name2x varchar(255),
+    child2_name1x varchar(255),
+    child2_name2x varchar(255)
+);
