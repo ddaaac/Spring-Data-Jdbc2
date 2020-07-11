@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
 
 @DataJdbcTest
-class ProductTest {
+class ProductRepositoryTest {
     @Autowired
     private ProductRepository productRepository;
 
@@ -17,7 +17,6 @@ class ProductTest {
         Product product = new Product(100L, "물건");
 
         Product actual = productRepository.save(product);
-        Product founded = productRepository.findById(actual.getId()).get();
 
         assertAll(
             () -> assertThat(actual.getId()).isEqualTo(100L),

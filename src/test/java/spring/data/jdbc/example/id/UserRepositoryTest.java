@@ -12,7 +12,7 @@ import spring.data.jdbc.example.config.JdbcConfig;
 
 @DataJdbcTest
 @Import(JdbcConfig.class)
-class UserTest {
+class UserRepositoryTest {
     @Autowired
     private UserRepository userRepository;
 

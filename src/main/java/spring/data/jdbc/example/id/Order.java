@@ -7,20 +7,17 @@ import org.springframework.data.relational.core.conversion.MutableAggregateChang
 import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.data.relational.core.mapping.event.BeforeSaveCallback;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Getter
 @Table("ORDERS")
 public class Order {
     @Id
     private UUID id;
+
     private String title;
-
-    public Order(UUID id, String title) {
-        this.id = id;
-        this.title = title;
-    }
-
-    public UUID getId() {
-        return id;
-    }
 
     public static class BeforeSaveOrderCallback implements BeforeSaveCallback<Order> {
         @Override

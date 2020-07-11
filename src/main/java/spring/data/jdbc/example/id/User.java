@@ -1,22 +1,25 @@
 package spring.data.jdbc.example.id;
 
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.domain.Persistable;
 import org.springframework.data.relational.core.mapping.event.AbstractRelationalEventListener;
 import org.springframework.data.relational.core.mapping.event.BeforeSaveEvent;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Getter
 public class User implements Persistable<Long> {
     @Id
     private final Long id;
+
     private final String name;
+
     @Transient
     private boolean isNew = false;
-
-    public User(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 
     public static User of(Long id, String name) {
         return new User(id, name);
@@ -28,14 +31,7 @@ public class User implements Persistable<Long> {
         return user;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
+    @CreatedDate
     @Override
     public boolean isNew() {
         return isNew;

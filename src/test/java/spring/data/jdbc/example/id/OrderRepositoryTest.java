@@ -11,7 +11,7 @@ import spring.data.jdbc.example.config.JdbcConfig;
 
 @DataJdbcTest
 @Import(JdbcConfig.class)
-class OrderTest {
+class OrderRepositoryTest {
     @Autowired
     private OrderRepository orderRepository;
 

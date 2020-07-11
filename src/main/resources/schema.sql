@@ -63,5 +63,6 @@ create table if not exists product
 create table if not exists member
 (
     id       bigint primary key,
-    name     varchar(50)
+    name     varchar(50),
+    password varchar(255)
 );
