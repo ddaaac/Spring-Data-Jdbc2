@@ -66,3 +66,21 @@ create table if not exists member
     name     varchar(50),
     password varchar(255)
 );
+
+create table if not exists subway
+(
+    id         bigint primary key auto_increment,
+    name       varchar(255) not null,
+    created_at datetime     not null,
+    updated_at datetime     not null
+);
+
+create table if not exists favorite
+(
+    id         bigint primary key auto_increment,
+    source_id  bigint       not null,
+    target_id  bigint       not null,
+    name       varchar(255) not null,
+    created_at datetime     not null,
+    updated_at datetime     not null
+);
