@@ -7,6 +7,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 
+import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -17,8 +18,10 @@ import org.springframework.data.jdbc.core.convert.JdbcCustomConversions;
 import org.springframework.data.jdbc.repository.config.AbstractJdbcConfiguration;
 import org.springframework.data.jdbc.repository.config.EnableJdbcAuditing;
 import org.springframework.data.relational.core.mapping.event.BeforeSaveCallback;
+import org.springframework.data.relational.core.mapping.event.BeforeSaveEvent;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import spring.data.jdbc.example.converter.EncryptString;
 import spring.data.jdbc.example.converter.Encryptor;
 import spring.data.jdbc.example.converter.SimpleEncryptor;
@@ -27,7 +30,16 @@ import spring.data.jdbc.example.id.User;
 
 @Configuration
 @EnableJdbcAuditing
+@Slf4j
 public class JdbcConfig extends AbstractJdbcConfiguration {
+    @Bean
+    ApplicationListener<BeforeSaveEvent<Object>> loggingBeforeSave() {
+        return event -> {
+            Object entity = event.getEntity();
+            log.info(entity + " is now saved");
+        };
+    }
+
     @Bean
     @Order
     BeforeSaveCallback<?> validateBeforeSave(Validator validator) {
