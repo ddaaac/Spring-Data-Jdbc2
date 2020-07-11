@@ -84,3 +84,20 @@ create table if not exists favorite
     created_at datetime     not null,
     updated_at datetime     not null
 );
+
+create table if not exists time_entity_base
+(
+    id         bigint primary key auto_increment,
+    name       varchar(255) not null,
+    created_at datetime,
+    updated_at datetime
+);
+
+create table if not exists time_child
+(
+    name       varchar(255) not null,
+    parent_key bigint       not null,
+    parent_id  bigint       not null,
+    created_at datetime,
+    updated_at datetime
+);
