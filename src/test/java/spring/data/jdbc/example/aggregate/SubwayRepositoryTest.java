@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
 
 @DataJdbcTest
-class SubwayTest {
+class SubwayRepositoryTest {
     @Autowired
     private SubwayRepository subwayRepository;
 

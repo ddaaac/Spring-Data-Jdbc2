@@ -1,7 +1,5 @@
 package spring.data.jdbc.example.onetomany;
 
-import java.util.List;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Embedded;
 

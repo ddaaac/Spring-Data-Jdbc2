@@ -33,8 +33,8 @@ create table if not exists piece
 
 create table if not exists embedded_entity
 (
-    id bigint primary key auto_increment,
-    name varchar(255),
+    id            bigint primary key auto_increment,
+    name          varchar(255),
     child1_name1x varchar(255),
     child1_name2x varchar(255),
     child2_name1x varchar(255),
@@ -100,4 +100,20 @@ create table if not exists time_child
     parent_id  bigint       not null,
     created_at datetime,
     updated_at datetime
+);
+
+create table if not exists validation_entity
+(
+    id              bigint primary key auto_increment,
+    long_than_three varchar(255),
+    not_blank       varchar(255),
+    past            datetime,
+    positive        int,
+    embedded_name   varchar(255)
+);
+
+create table if not exists validation_child_entity
+(
+  email varchar(255),
+  validation_entity bigint
 );

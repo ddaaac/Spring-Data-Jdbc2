@@ -1,7 +1,6 @@
 package spring.data.jdbc.example.id;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.domain.Auditable;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
