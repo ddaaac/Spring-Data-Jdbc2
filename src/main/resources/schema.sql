@@ -62,9 +62,10 @@ create table if not exists product
 
 create table if not exists member
 (
-    id       bigint primary key,
-    name     varchar(50),
-    password varchar(255)
+    id         bigint primary key,
+    name       varchar(50),
+    password   varchar(255),
+    created_at datetime
 );
 
 create table if not exists subway
@@ -114,6 +115,15 @@ create table if not exists validation_entity
 
 create table if not exists validation_child_entity
 (
-  email varchar(255),
-  validation_entity bigint
+    email             varchar(255),
+    validation_entity bigint
 );
+
+create table if not exists issue
+(
+    id         bigint primary key auto_increment,
+    member_id  bigint,
+    title      varchar(255),
+    created_at datetime,
+    updated_at datetime
+)
