@@ -13,11 +13,22 @@ class IssueRepositoryTest {
     private IssueRepository issueRepository;
 
     @Test
-    void name() {
+    void auditFinalField() {
         final Issue issue = issueRepository.save(
             Issue.builder().title("이슈").memberId(AggregateReference.to(1L)).build());
 
         assertThat(issue.getCreatedAt()).isNotNull();
         assertThat(issue.getUpdatedAt()).isNotNull();
+    }
+
+    @Test
+    void witherAccessibility() {
+        final Issue issue = issueRepository.save(
+            Issue.builder().title("이슈").memberId(AggregateReference.to(1L)).build());
+
+        final Issue persisted = issueRepository.findById(issue.getId()).get();
+
+        assertThat(persisted.getCreatedAt()).isEqualTo(issue.getCreatedAt());
+        assertThat(persisted.getUpdatedAt()).isEqualTo(issue.getUpdatedAt());
     }
 }
